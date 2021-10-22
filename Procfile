@@ -1,3 +1,3 @@
-release: python3 ./bscsupportbot/manage.py migrate
-worker: python3 ./bscsupportbot/manage.py bot
-web: cd app/bscsupportbot/;gunicorn BSCSupportBot.wsgi --log-file -
+release: python3 ./manage.py migrate
+worker: python3 ./manage.py bot
+web: gunicorn BSCSupportBot.wsgi --log-file -
