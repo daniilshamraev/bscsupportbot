@@ -22,10 +22,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3iu%p#k!p7026-+6c0bn&fn#9ystafw1zlgvms#(l7+cdjnw5w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+
+DATABASES = {
+        'default': dj_database_url.parse(os.getenv('HEROKU_POSTGRESQL_COPPER_URL'))
+    }
+ALLOWED_HOSTS = ['*']
+SECRET_KEY = os.getenv('SECRET_KEY')
+django_heroku.settings(locals())
+TG_TOKEN = os.getenv('TG_TOKEN')
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,17 +84,6 @@ WSGI_APPLICATION = 'bscsupportbot.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'BSG_DB',
-        'USER': 'BSC',
-        'PASSWORD': '3fwZ3BreEG9rzCZxbj1}Ln9T*O9uwufcZ~Ne}IeHGp3svup2qQk{65Dtd9Q$',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -128,12 +125,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-TG_TOKEN = '2039462853:AAHv71Z18qo93WlkgG-tjD6AglcwhHPLzEQ'
 
-if not DEBUG:
-    DATABASES = {
-        'default': dj_database_url.parse(os.getenv('HEROKU_POSTGRESQL_COPPER_URL'))
-    }
-    ALLOWED_HOSTS = ['*']
-    SECRET_KEY = os.getenv('SECRET_KEY')
-    django_heroku.settings(locals())
+
