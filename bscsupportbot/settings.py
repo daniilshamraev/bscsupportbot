@@ -28,7 +28,7 @@ DEBUG = False
 
 
 DATABASES = {
-        'default': dj_database_url.parse(os.getenv('HEROKU_POSTGRESQL_COPPER_URL'))
+        'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
     }
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = os.getenv('SECRET_KEY')
