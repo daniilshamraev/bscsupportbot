@@ -59,7 +59,7 @@ def handler_manger(update: Update, context: CallbackContext) -> None:
         id_app = answer.replace('Закрыть заявку №', '')[:1]
         update.message.reply_text(text=f'Заявка №{id_app} закрыта.')
         return None
-    if update.chat_member.chat.id: return None
+        '''TO DO: Make check for data chat type'''
     if context.user_data['App']['is_start']:
         if answer == 'ТЕХНИКИ':
             context.user_data['App']['type'] = 1

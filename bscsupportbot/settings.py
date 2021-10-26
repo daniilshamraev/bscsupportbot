@@ -22,12 +22,11 @@ DEBUG = False
 
 DATABASES = {
         'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-    }
+}
+
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = os.getenv('SECRET_KEY')
 TG_TOKEN = os.getenv('TG_TOKEN')
-
-ALLOWED_HOSTS = ['*']
 
 # Application definition
 
