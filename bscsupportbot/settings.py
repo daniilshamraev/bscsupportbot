@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'BSCSupportBot.urls'
+ROOT_URLCONF = 'bscsupportbot.urls'
 
 TEMPLATES = [
     {
